@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="assets/style.css" />
+    </head>
+
+<body>
+
+<h1>Coding an outline shader in p5js</h1>
+<p>My first paragraph.</p>
+
+  
+        <h1>
+          Depth
+        </h1>
+        <iframe  scrolling="no" frameborder="0" src="https://editor.p5js.org/tinywitchdraws/full/JzuKqGskn"></iframe>
+        <p>
+            The depth in this case refers to the distance from tthe camera to the object. 
+            This creates some issues with more complex shapes as the values can only range from 1 to 0. As a result, the approach looses it's effectiveness in models that as large and require fine detail in the depth buffer. In this case, we are using relatively small objects so the issue is not as pronounced. 
+
+        </p>
+        <h2>Depth with Sobel</h2>
+        <iframe src="https://editor.p5js.org/tinywitchdraws/full/QWkolDl8V"></iframe>
+        <p>
+            When Sobel edge detecttion is applied to the depth buffer, we get to see the areas where depth changes drastically- ie. object outlines, holes, and protrusions. 
+            For example,
+            <ul>
+                <l1>the lid of the Utah teapot</l1>
+                <li>the outline of the cube</li>
+                <li>etc..</li>
+            </ul>
+        </p>
+        <h1>
+            Normal
+          </h1>
+
+           <!-- normal -->
+        <iframe scrolling="no" frameborder="0" src="https://editor.p5js.org/tinywitchdraws/full/FBKfKU3Mm"></iframe>
+        <p>
+            We usually see normal materials used to desrcibe the way light bends around an object in 3d modeling. However, using the noral map in combiination with a Sobel shader results in outlines where tthe direction of the faces of the object change. 
+            
+        </p>
+          <h2>Normal with Sobel Edge</h2>
+          <iframe scrolling="no" frameborder="0" src="https://editor.p5js.org/tinywitchdraws/full/AubfQkSWQ"></iframe>
+          <p>
+              When we apply a Sobel shader to the normal material buffer we can see things like:
+              <ul>
+                  <li>flat edges meeting flat edges (ie. the faces of the cube)</li>
+                  <li>curved edges meeting flat edges (ie. the edges of the  cylinder)</li>
+              </ul>
+          </p>
+
+        <!-- 2. embed your p5 sketch -->
+  
+        <!-- <div class="fullwidth"> -->
+          <!-- below width and height refers to the dimensions of your sketch-->
+  <h1>Final</h1>
+<iframe  scrolling="no" frameborder="0" src="https://editor.p5js.org/tinywitchdraws/full/D-jgBnHCR"></iframe>          
+
+        <!-- <a href="https://editor.p5js.org/tinywitchdraws/sketches/oKGOTaMz1"><button>Full Code Here!</button></a> -->
+        <p>
+          To get the  final result, I am using the Sobel edge detector simultaneously on both the normal and depth buffer and multipying the Sobel results to get the black lines. 
+        </p>
+<h1>Final with light</h1>
+<iframe src="https://editor.p5js.org/tinywitchdraws/full/7AfWuPHWR"></iframe>
+<p>
+    Here I have applied two seperate buffers- a normal and lit scene- in order to make an outlined lit demo. 
+</p>
+<!-- <button class="learn-more">hewwo</button> -->
+<h1>Resources</h1>
+<p> I simplified this code to get the depth and frame buffer, which was essential for post-processing.</post-processing></p>
+<iframe src="https://editor.p5js.org/davepagurek/full/cmcqbj1II"></iframe>
+<p>
+    I used three different Sobel codes over the course of the project, but settled on <a href="https://www.shadertoy.com/view/4df3RS">this code</a> for the final.
+    If you want to play around with it in p5js, you can find it in the editor <a href="https://editor.p5js.org/tinywitchdraws/sketches/Y-hGYbLcp">here</a>. 
+</p>
+  
+
+</body>
+</html>
